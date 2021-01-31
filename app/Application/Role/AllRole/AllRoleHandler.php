@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Application\User\AllUser;
+namespace App\Application\Role\AllRole;
 
+use App\Model\Role\Role;
 use App\Model\User\User;
 use Rosamarsky\CommandBus\Command;
 use Rosamarsky\CommandBus\Handler;
 
 /**
- * Class AllUserHandler
- * @package App\Application\User\AllUser
+ * Class AllRoleHandler
+ * @package App\Application\Role\AllRole
  */
-class AllUserHandler implements Handler
+class AllRoleHandler implements Handler
 {
     /**
-     * @param Command|AllUser $command
+     * @param Command|AllRole $command
      * @return User[]|\Illuminate\Database\Eloquent\Collection|mixed
      */
     public function handle(Command $command)
     {
-        return User::paginate();
+        return Role::paginate();
     }
 }

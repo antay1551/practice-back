@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Application\User\ShowUser;
+namespace App\Application\Role\DestroyRole;
 
 use Rosamarsky\CommandBus\Command;
 
 /**
- * Class ShowUser
- * @package App\Application\User\StoreUser
+ * Class DestroyRole
+ * @package App\Application\Role\DestroyRole
  */
-class ShowUser implements Command
+class DestroyRole implements Command
 {
     /**
      * @var int
@@ -16,7 +16,7 @@ class ShowUser implements Command
     private $id;
 
     /**
-     * ShowUser constructor.
+     * DestroyRole constructor.
      * @param int $id
      */
     public function __construct(int $id)

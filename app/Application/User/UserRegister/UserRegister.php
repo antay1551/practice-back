@@ -27,6 +27,13 @@ class UserRegister implements Command
      */
     private $lastName;
 
+    /**
+     * UserRegister constructor.
+     * @param string $firstName
+     * @param string $lastName
+     * @param string $email
+     * @param string $password
+     */
     public function __construct(
         string $firstName,
         string $lastName,

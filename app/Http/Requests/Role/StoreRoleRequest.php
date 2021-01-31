@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Role;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class UserRegisterRequest
+ * Class StoreRoleRequest
  * @package App\Http\Requests\User
  */
-class UserRegisterRequest extends FormRequest
+class StoreRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,11 +28,7 @@ class UserRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-            'passwordConfirm' => 'required|same:password|min:8',
+            'name' => 'required',
         ];
     }
 }

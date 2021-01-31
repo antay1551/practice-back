@@ -32,7 +32,7 @@ class StoreUserRequest extends FormRequest
             'lastName' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
-            'password_confirm' => 'required|same:password|min:8',
+            'passwordConfirm' => 'required|same:password|min:8',
         ];
     }
 }

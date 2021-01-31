@@ -14,10 +14,10 @@ class ShowUserHandler implements Handler
 {
     /**
      * @param Command|ShowUser $command
-     * @return User
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed|null
      */
     public function handle(Command $command)
     {
-        return User::find($command->id());
+        return User::with('role')->find($command->id());
     }
 }
