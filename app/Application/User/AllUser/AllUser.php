@@ -10,8 +10,10 @@ use Rosamarsky\CommandBus\Command;
  */
 class AllUser implements Command
 {
+    /**
+     * AllUser constructor.
+     */
     public function __construct()
     {
-
     }
 }

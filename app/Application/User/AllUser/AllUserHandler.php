@@ -14,6 +14,6 @@ class AllUserHandler implements Handler
      */
     public function handle(Command $command)
     {
-        return User::all();
+        return User::paginate();
     }
 }

@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Application\User\UserRegister;
+namespace App\Application\User\StoreUser;
 
+use App\Http\Requests\User\StoreUserRequest;
 use App\Model\User\User;
 use Illuminate\Support\Facades\Hash;
 use Rosamarsky\CommandBus\Command;
 use Rosamarsky\CommandBus\Handler;
 
 /**
- * Class UserRegisterHandler
- * @package App\Application\User\UserRegister
+ * Class StoreUserHandler
+ * @package App\Application\User\StoreUser
  */
-class UserRegisterHandler implements Handler
+class StoreUserHandler implements Handler
 {
     /**
-     * @param Command|UserRegister $command
+     * @param Command|StoreUserRequest $command
      * @return User
      */
     public function handle(Command $command)

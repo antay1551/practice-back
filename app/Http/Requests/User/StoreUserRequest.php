@@ -5,10 +5,10 @@ namespace App\Http\Requests\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class UserRegisterRequest
+ * Class StoreUserRequest
  * @package App\Http\Requests\User
  */
-class UserRegisterRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
