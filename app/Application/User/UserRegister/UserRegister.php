@@ -5,8 +5,8 @@ namespace App\Application\User\UserRegister;
 use Rosamarsky\CommandBus\Command;
 
 /**
- * Class AllUser
- * @package App\Application\User\AllUser
+ * Class UserRegister
+ * @package App\Application\User\UserRegister
  */
 class UserRegister implements Command
 {

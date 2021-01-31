@@ -8,7 +8,7 @@ use Rosamarsky\CommandBus\Handler;
 
 /**
  * Class DestroyUserHandler
- * @package App\Application\User\DestroyUser
+ * @package App\Application\Role\DestroyRole
  */
 class DestroyUserHandler implements Handler
 {

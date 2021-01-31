@@ -4,6 +4,7 @@ namespace App\Application\Role\AllRole;
 
 use App\Model\Role\Role;
 use App\Model\User\User;
+use Illuminate\Database\Eloquent\Collection;
 use Rosamarsky\CommandBus\Command;
 use Rosamarsky\CommandBus\Handler;
 
@@ -15,7 +16,7 @@ class AllRoleHandler implements Handler
 {
     /**
      * @param Command|AllRole $command
-     * @return User[]|\Illuminate\Database\Eloquent\Collection|mixed
+     * @return User[]|Collection|mixed
      */
     public function handle(Command $command)
     {

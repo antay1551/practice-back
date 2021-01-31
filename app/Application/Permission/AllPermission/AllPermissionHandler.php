@@ -4,6 +4,7 @@ namespace App\Application\Permission\AllPermission;
 
 use App\Model\Permission\Permission;
 use App\Model\User\User;
+use Illuminate\Database\Eloquent\Collection;
 use Rosamarsky\CommandBus\Command;
 use Rosamarsky\CommandBus\Handler;
 
@@ -15,7 +16,7 @@ class AllPermissionHandler implements Handler
 {
     /**
      * @param Command|AllPermission $command
-     * @return User[]|\Illuminate\Database\Eloquent\Collection|mixed
+     * @return User[]|Collection|mixed
      */
     public function handle(Command $command)
     {

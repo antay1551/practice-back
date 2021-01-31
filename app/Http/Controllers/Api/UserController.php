@@ -28,7 +28,7 @@ class UserController extends ApiController
         $users = $this->dispatch(new AllUser());
 
         return response()->json(
-            new UserResource($users),
+            UserResource::collection($users),
             Response::HTTP_OK
         );
     }
@@ -90,7 +90,7 @@ class UserController extends ApiController
      * @param $id
      * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
         $this->dispatch(new DestroyUser($id));
 

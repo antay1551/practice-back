@@ -29,10 +29,10 @@ class UserResource extends JsonResource
             ],
         ];
 
-        $response['relationships']['role']['data'] = [
+        $response['relationships']['role'] = [
             'type' => 'role',
             'attributes' => [
-                'role' => $this->role,
+                'role' => $this->role->name ? $this->role->name : null,
             ]
         ];
 

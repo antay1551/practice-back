@@ -17,11 +17,19 @@ class ApiController extends Controller
      */
     private $commandBus;
 
+    /**
+     * ApiController constructor.
+     * @param CommandBus $commandBus
+     */
     public function __construct(CommandBus $commandBus)
     {
         $this->commandBus = $commandBus;
     }
 
+    /**
+     * @param Command $command
+     * @return mixed
+     */
     public function dispatch(Command $command)
     {
         return $this->commandBus->execute($command);

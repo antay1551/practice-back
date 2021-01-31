@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserSeeder
+ * @package database\seeds
  */
 class UserSeeder extends Seeder
 {

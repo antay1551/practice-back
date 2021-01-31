@@ -20,13 +20,11 @@ class StoreUserHandler implements Handler
      */
     public function handle(Command $command)
     {
-        $user = User::create([
+        return User::create([
             'first_name' => $command->firstName(),
             'last_name' => $command->lastName(),
             'email' => $command->email(),
             'password' => Hash::make($command->password())
         ]);
-
-        return $user;
     }
 }

@@ -14,7 +14,6 @@ class DestroyUserHandler implements Handler
 {
     /**
      * @param Command|DestroyUser $command
-     * @return User
      */
     public function handle(Command $command)
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Application\User\UserRegister\UserRegister;
 use App\Http\Requests\User\UserRegisterRequest;
+use App\Http\Resources\User\UserResource;
 use App\Model\User\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -29,7 +30,10 @@ class AuthController extends ApiController
             $request->get('password')
         ));
 
-        return response($user, Response::HTTP_CREATED);
+        return response(
+            new UserResource($user),
+            Response::HTTP_CREATED
+        );
     }
 
     /**

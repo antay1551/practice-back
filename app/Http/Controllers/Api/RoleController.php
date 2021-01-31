@@ -9,6 +9,10 @@ use App\Application\Role\StoreRole\StoreRole;
 use App\Application\Role\UpdateRole\UpdateRole;
 use App\Http\Requests\Role\StoreRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
+use App\Http\Resources\Role\RoleDestroyResource;
+use App\Http\Resources\Role\RoleResource;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 /**
@@ -18,63 +22,75 @@ use Illuminate\Http\Response;
 class RoleController extends ApiController
 {
     /**
-     * @return mixed
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $roles = $this->dispatch(new AllRole());
 
-        return $roles;
-//        return response($user, Response::HTTP_OK);
+        return response()->json(
+            RoleResource::collection($roles),
+            Response::HTTP_OK
+        );
     }
 
     /**
      * @param StoreRoleRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function store(StoreRoleRequest $request)
+    public function store(StoreRoleRequest $request): JsonResponse
     {
         $role = $this->dispatch(new StoreRole($request->get('name')));
 
-        return response($role, Response::HTTP_CREATED);
+        return response()->json(
+            new RoleResource($role),
+            Response::HTTP_CREATED
+        );
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
+     * @param $id
+     * @return JsonResponse
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
         $role = $this->dispatch(new ShowRole($id));
 
-        return $role;
+        return response()->json(
+            new RoleResource($role),
+            Response::HTTP_OK
+        );
     }
 
     /**
      * @param UpdateRoleRequest $request
      * @param int $id
-     * @return mixed
+     * @return JsonResponse
      */
-    public function update(UpdateRoleRequest $request, $id)
+    public function update(UpdateRoleRequest $request, $id): JsonResponse
     {
-        $user = $this->dispatch(new UpdateRole(
+        $role = $this->dispatch(new UpdateRole(
             $id,
             $request->get('name')
         ));
 
-        return $user;
+        return response()->json(
+            new RoleResource($role),
+            Response::HTTP_OK
+        );
     }
 
     /**
-     * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     * @param int $id
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
         $this->dispatch(new DestroyRole($id));
 
-        return response([], Response::HTTP_NO_CONTENT);
+        return response()->json(
+            new RoleDestroyResource(new Request()),
+            Response::HTTP_NO_CONTENT
+        );
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Application\User\UpdateUser;
 
 use App\Model\User\User;
-use Illuminate\Support\Facades\Hash;
 use Rosamarsky\CommandBus\Command;
 use Rosamarsky\CommandBus\Handler;
 

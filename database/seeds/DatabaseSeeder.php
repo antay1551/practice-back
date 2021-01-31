@@ -4,6 +4,9 @@ use database\seeds\RoleSeeder;
 use database\seeds\UserSeeder;
 use Illuminate\Database\Seeder;
 
+/**
+ * Class DatabaseSeeder
+ */
 class DatabaseSeeder extends Seeder
 {
     /**

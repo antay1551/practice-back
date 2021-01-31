@@ -18,10 +18,8 @@ class StoreRoleHandler implements Handler
      */
     public function handle(Command $command)
     {
-        $role = Role::create([
+        return Role::create([
             'name' => $command->name(),
         ]);
-
-        return $role;
     }
 }
