@@ -2,6 +2,7 @@
 
 namespace database\seeds;
 
+use App\Model\Permission\Permission;
 use App\Model\Role\Role;
 use Illuminate\Database\Seeder;
 
@@ -18,13 +19,25 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::insert([
-            [
-                'name' => 'Admin',
-            ],
-            [
-                'name' => 'User',
-            ]
+        $admin = Role::create([
+            'name' => 'Admin',
         ]);
+
+        $editor = Role::create([
+            'name' => 'Editor',
+        ]);
+
+        $viewer = Role::create([
+            'name' => 'Viewer',
+        ]);
+
+        $permission = Permission::all();
+
+        $admin->permissions()->attach($permission->pluck('id'));
+
+        $editor->permissions()->attach($permission->pluck('id'));
+        $editor->permissions()->detach(4);
+
+        $viewer->permissions()->attach([1, 3, 5, 7]);
     }
 }

@@ -25,14 +25,21 @@ class UserSeeder extends Seeder
                 'last_name' => 'Ivanov',
                 'email' => 'ivanov@test.com',
                 'password' => Hash::make('password'),
-                'role' => 1
+                'role_id' => 1
             ],
             [
                 'first_name' => 'Petr',
                 'last_name' => 'Petrov',
                 'email' => 'petrov@test.com',
                 'password' => Hash::make('password'),
-                'role' => 2,
+                'role_id' => 2,
+            ],
+            [
+                'first_name' => 'Sidr',
+                'last_name' => 'Sidorov',
+                'email' => 'sidorov@test.com',
+                'password' => Hash::make('password'),
+                'role_id' => 3,
             ]
         ]);
     }

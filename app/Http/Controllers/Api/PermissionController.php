@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Application\Permission\AllPermission\AllPermission;
-use Illuminate\Http\Request;
+use App\Http\Resources\Permission\PermissionResource;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 /**
  * Class PermissionController
@@ -12,12 +14,15 @@ use Illuminate\Http\Request;
 class PermissionController extends ApiController
 {
     /**
-     * @return mixed
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $permissions = $this->dispatch(new AllPermission());
 
-        return $permissions;
+        return response()->json(
+            PermissionResource::collection($permissions),
+            Response::HTTP_OK
+        );
     }
 }

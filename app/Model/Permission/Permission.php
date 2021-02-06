@@ -2,7 +2,9 @@
 
 namespace App\Model\Permission;
 
+use App\Model\Role\Role;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\Model\Permission\Permission
@@ -16,5 +18,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Permission extends Model
 {
-    //
+    /**
+     * @return BelongsToMany
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'role_permissions');
+    }
 }
