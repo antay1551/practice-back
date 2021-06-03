@@ -27,7 +27,7 @@ class RoleController extends ApiController
     public function index(): JsonResponse
     {
         $roles = $this->dispatch(new AllRole());
-dd(11);
+
         return response()->json(
             RoleResource::collection($roles),
             Response::HTTP_OK
