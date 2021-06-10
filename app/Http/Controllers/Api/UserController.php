@@ -8,6 +8,7 @@ use App\Application\User\ShowUser\ShowUser;
 use App\Application\User\StoreUser\StoreUser;
 use App\Application\User\UpdateUser\UpdateUser;
 use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\User\UserDestroyResource;
 use App\Http\Resources\User\UserResource;
 use Illuminate\Http\JsonResponse;
@@ -53,11 +54,12 @@ class UserController extends ApiController
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return JsonResponse
      */
-    public function show($id): JsonResponse
+    public function show(int $id): JsonResponse
     {
+        dd(111);
         $user = $this->dispatch(new ShowUser($id));
 
         return response()->json(
@@ -67,11 +69,11 @@ class UserController extends ApiController
     }
 
     /**
-     * @param Request $request
-     * @param $id
+     * @param UpdateUserRequest $request
+     * @param int $id
      * @return JsonResponse
      */
-    public function update(Request $request, $id): JsonResponse
+    public function update(UpdateUserRequest $request, int $id): JsonResponse
     {
         $user = $this->dispatch(new UpdateUser(
             $id,

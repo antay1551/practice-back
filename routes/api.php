@@ -17,29 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register', [AuthController::class, 'register'])
-    ->name('register');
-
-Route::post('login', [AuthController::class, 'login'])
-    ->name('login');
+Route::name('auth.')
+    ->group(app_path('/Http/Routes/AuthRoutes.php'));
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('user', [AuthController::class, 'user'])
-        ->name('user');
-    Route::post('logout', [AuthController::class, 'logout'])
-        ->name('logout');
-
-    Route::get('users', [UserController::class, 'index'])
-        ->name('users.index');
-    Route::post('users', [UserController::class, 'store'])
-        ->name('users.store');
-    Route::get('users/{id}', [UserController::class, 'show'])
-        ->name('users.show');
-    Route::put('users/{id}', [UserController::class, 'update'])
-        ->name('users.update');
-    Route::delete('users/{id}', [UserController::class, 'destroy'])
-        ->name('users.destroy');
-
     Route::get('permissions', [PermissionController::class, 'index'])
         ->name('user.permissions');
 
@@ -53,10 +34,4 @@ Route::middleware('auth:sanctum')->group(function () {
         ->name('role.update');
     Route::delete('role/{id}', [RoleController::class, 'destroy'])
         ->name('role.destroy');
-
-
 });
-
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});

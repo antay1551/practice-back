@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -14,8 +14,22 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+        $this->loginAsUser();
 
-        $response->assertStatus(200);
+        $this->json('GET', route('auth.login', ['id' => 1]))
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJson([
+                'data' => [
+                    [
+                        'type' => 'user',
+                        'id' => 1,
+                        'attributes' => [
+                            'firstName' => '',
+                            'lastName' => '',
+                            'email' => '',
+                        ],
+                    ]
+                ]
+            ]);
     }
 }
