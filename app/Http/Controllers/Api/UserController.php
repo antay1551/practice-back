@@ -59,7 +59,6 @@ class UserController extends ApiController
      */
     public function show(int $id): JsonResponse
     {
-        dd(111);
         $user = $this->dispatch(new ShowUser($id));
 
         return response()->json(

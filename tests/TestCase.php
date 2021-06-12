@@ -17,7 +17,8 @@ abstract class TestCase extends BaseTestCase
      * @param string|null $password
      * @return string
      */
-    public function loginAsUser(?string $email = 'ivanov@test.com', ?string $password = 'password') {
+    public function loginAsUser(?string $email = 'ivanov@test.com', ?string $password = 'password')
+    {
         $responseLogin = $this->json('post', route('auth.login'), [
             'email' => $email,
             'password' => $password
